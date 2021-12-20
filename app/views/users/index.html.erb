@@ -1,0 +1,28 @@
+<div class="section-title">
+  ユーザー一覧
+</div>
+<div class="list-count">
+  全<%= @users.count %>件
+</div>
+<% if user_signed_in? %>
+  <% @users.each do |user| %>
+    <div class="user-list">
+      <%= link_to user, class:"list-display" do %>
+        <div class="user-image"><%= image_tag user.user_image %></div>
+        <div class="user-name"><%= user.name %></div>
+      <% end %>
+    </div>  
+  <% end %>
+<% else %>
+  <p class="nologin-message">
+    ログインしてみてみよう
+  </p>
+  <% @users.each do |user| %>
+    <div class="user-list">
+      <%= link_to root_path, class:"list-display" do %>
+        <div class="user-image"><%= image_tag user.user_image %></div>
+        <div class="user-name"><%= user.name %></div>
+      <% end %>
+    </div>  
+  <% end %>
+<% end %>

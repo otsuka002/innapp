@@ -1,0 +1,42 @@
+<div class="section-title">
+  ユーザー詳細
+</div>
+<article class="user-show">
+  <div class="user-image">
+    <%= image_tag @user.user_image %>
+  </div>
+  <p><%= @user.name %></p>
+  <% if @user.id == current_user.id %> 
+    <%= @user.email %>
+    <%= link_to "編集", edit_user_path(@user) %>
+  <% end %>
+  <p class="subheading-user">
+    <%= @user.name %>の投稿一覧
+  </p>
+  <div class="list-count">
+    全<%= @user.rooms.count %>件
+  </div>
+  <% @user.rooms.each do |room| %>
+    <%= link_to room, class:"list-display" do %>
+      <div class="room-list">
+        <div class="room-image">
+          <%= image_tag room.room_image %>
+        </div>
+        <div class="room-name">
+          <%= room.room_name %>
+        </div>
+        <br>
+        <div class="room-address">
+          <%= room.address %>
+        </div>
+        <br>
+        <div class="room-price">
+          ¥ <%= room.price %>
+        </div>
+        <% if @user.id == current_user.id %>
+          <%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</article>

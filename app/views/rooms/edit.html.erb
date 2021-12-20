@@ -1,0 +1,38 @@
+<div class="section-title">
+  ルーム情報編集
+</div>
+<article class="room-edit">
+  <%= form_for @room do |f| %>
+    <div class="input-label">
+      <%= f.label :room_name, "部屋名" %>
+    </div>
+    <div class="input-form">
+      <%= f.text_field :room_name %>
+    </div>
+    <div class="input-label">
+      <%= f.label :address, "場所" %>
+    </div>
+    <div class="input-form">
+      <%= f.text_field :address %>
+    </div>
+    <div class="input-label">
+      <%= f.label :introduction, "説明" %>
+    </div>
+    <div class="input-form">
+      <%= f.text_area :introduction %>
+    </div>
+    <div class="input-label">
+      <%= f.label :price, "料金" %>
+    </div>
+    <div class="input-form">
+      <%= f.number_field :price %>
+    </div>
+    <div class="input-label">
+      <%= f.label :room_image, "イメージ画像" %>
+    </div>
+    <div class="input-form">
+      <%= f.file_field :room_image %>
+    </div>
+    <%= f.submit "更新" %>
+  <% end %>
+</article>  
