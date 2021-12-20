@@ -1,0 +1,52 @@
+<div class="section-title">
+  ルーム一覧 <%= @keyword %>
+</div>
+<div class="list-count">
+  検索結果:<%= @rooms.count %>件
+</div>
+<% if user_signed_in? %>
+  <% @rooms.each do |room| %>
+    <div class="room-list">
+      <%= link_to room, class:"list-display" do %>
+        <div class="room-image">
+          <%= image_tag room.room_image %>
+        </div>
+        <div class="room-name">
+          <%= room.room_name %>
+        </div>
+        <br>
+        <div class="room-address">
+          <%= room.address %>
+          </div>
+          <br>
+        <div class="room-price">
+          ¥ <%= room.price %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="nologin-message">
+    ログインしてみてみよう
+  </p>
+  <% @rooms.each do |room| %>
+    <div class="room-list">
+      <%= link_to root_path, class:"list-display" do %>
+        <div class="room-image">
+          <%= image_tag room.room_image %>
+        </div>
+        <div class="room-name">
+          <%= room.room_name %>
+        </div>
+        <br>
+        <div class="room-address">
+          <%= room.address %>
+        </div>
+        <br>
+        <div class="room-price">
+          ¥ <%= room.price %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

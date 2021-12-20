@@ -1,0 +1,26 @@
+<div class="section-title">
+  ユーザー情報編集
+</div>
+<article class="user-edit">
+  <%= form_for @user do |f| %>
+    <div class="input-label">
+      <%= f.label :name, "Name" %>
+    </div>
+    <div class="input-form">
+      <%= f.text_field :name %>
+    </div>
+    <div class="input-label">
+      <%= f.label :email, "Email" %>
+    </div>
+    <div class="input-form">
+      <%= f.email_field :email %>
+    </div>
+    <div class="input-label">
+      <%= f.label :user_image, "プロフィール画像" %>
+    </div>
+    <div class="input-form">
+      <%= f.file_field :user_image %>
+    </div>
+    <%= f.submit "更新" %>
+  <% end %>
+</article>

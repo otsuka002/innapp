@@ -1,0 +1,12 @@
+<div class="section-title">
+  innapp
+</div>
+<article class="home-index">
+  <div class="home-search">
+    <p>場所やキーワードで検索してみよう</p>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+</article>

@@ -6,10 +6,50 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+    <header>
+      <div class="search-form">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+      <p class="control">
+        <%= link_to "ユーザー一覧", :users, class:"header-buttom" %>
+      </p>
+      <p class="control">
+        <%= link_to "ルーム一覧", :rooms, class:"header-buttom" %>
+      </p>
+      <% if user_signed_in? %>
+      <p class="control">
+        <%= link_to "ルーム登録", new_room_path, class:"header-buttom" %>
+      </p>
+      <p class="control">
+        <%= link_to "予約一覧", :reservations, class:"header-buttom" %>
+      </p>
+      <p class="control">
+        <%= link_to "マイページ", user_path(current_user), class:"header-buttom" %>
+      </p>
+      <p class="control">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header-buttom" %>
+      </p>
+      <% else %>
+      <p class="control">
+        <%= link_to "新規登録", new_user_registration_path, class:"header-buttom" %>
+      </p>
+      <p class="control">
+        <%= link_to "ログイン", new_user_session_path, class:"header-buttom" %>
+      </p>
+      <% end %>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>
+      <p>POTEPAN</p>
+    </footer>
   </body>
 </html>
